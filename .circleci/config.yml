@@ -17,6 +17,15 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+          
+  new-greeting:
+    docker:
+      - image: 725732953117.dkr.ecr.eu-central-1.amazonaws.com/hello-world:latest
+    steps:
+      - checkout
+      - run:
+          name: "new greeting"
+          command: "echo New greetings from new job"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -24,3 +33,4 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+      - new-greeting
